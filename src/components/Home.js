@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from './Header.js';
 import './../App.css';
 
 class Home extends Component {
@@ -6,7 +7,10 @@ class Home extends Component {
   render() {
     return (
       <div className="">
-        <p>Hello World !</p>
+        <Header></Header>
+        <div className="container-fluid">
+          <h1>Hello World !</h1>
+        </div>
       </div>
     );
   }
