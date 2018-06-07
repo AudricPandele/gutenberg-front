@@ -1,11 +1,32 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 import Modal from 'react-responsive-modal';
 import './../App.css';
 
 class Header extends Component {
 
   render() {
+
+    const cookies = new Cookies();
+    const token = cookies.get('token');
+    function Nav () {
+      if(token != null){
+        return (
+          <span className="navbar-text" display="fasle">
+            {token}
+          </span>
+        )
+      } else {
+        return (
+          <span className="navbar-text" display="fasle">
+            <Link to={{ pathname: '/login'}}>
+              <a className="nav-link">Connexion</a>
+            </Link>
+          </span>
+        )
+      }
+    }
 
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-white">
@@ -21,11 +42,7 @@ class Header extends Component {
               </Link>
             </li>
           </ul>
-          <span className="navbar-text">
-            <Link to={{ pathname: '/login'}}>
-              <a className="nav-link">Connexion</a>
-            </Link>
-          </span>
+          <Nav></Nav>
         </div>
       </nav>
     );

@@ -4,13 +4,12 @@ import Cookies from 'universal-cookie';
 
 class IsLogged extends Component {
 
-  componentDidMount(){
-    const cookies = new Cookies();
-    const token = cookies.get('token');
-  }
+  componentDidMount(){}
 
   render() {
-    if(cookies.get('token') == null){
+    const cookies = new Cookies();
+    const token = cookies.get('token');
+    if(token == null){
       return(<Redirect to='/login' />);
     }
     else{
