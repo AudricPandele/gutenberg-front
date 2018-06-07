@@ -8,6 +8,10 @@ import './../App.css';
 
 class Dashboard extends Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   render() {
 
     const fetchArticles = [
@@ -55,7 +59,10 @@ class Dashboard extends Component {
 
             {/* CONTENT MILLIEU */}
             <div className="col-md-9">
-              <h1 className="text-center">Welcome to your dashboard. You can create a folder, add an article to a folder ...</h1>
+              <h1 className="text-center">Welcome to {this.props.name}</h1>
+              <ArticleList
+                data={fetchArticles}
+              ></ArticleList>
             </div>
 
             {/* LEGER ESPACE DROITE */}

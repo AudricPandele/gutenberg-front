@@ -6,22 +6,33 @@ import './../App.css';
 
 class Header extends Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+
+    function logoutClick () {
+      const cookies = new Cookies();
+      cookies.remove('token');
+    }
 
     const cookies = new Cookies();
     const token = cookies.get('token');
     function Nav () {
       if(token != null){
         return (
-          <span className="navbar-text" display="fasle">
-            {token}
+          <span className="navbar-text">
+            <Link to={{ pathname: '/'}} onClick={logoutClick}>
+              <a className="">Logout</a>
+            </Link>
           </span>
         )
       } else {
         return (
-          <span className="navbar-text" display="fasle">
+          <span className="navbar-text">
             <Link to={{ pathname: '/login'}}>
-              <a className="nav-link">Connexion</a>
+              <a className="">Login</a>
             </Link>
           </span>
         )
