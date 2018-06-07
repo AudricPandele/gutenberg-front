@@ -14,8 +14,7 @@ class IsLogged extends Component {
     }
     else{
       return (
-        <div>
-        </div>
+        <div></div>
       );
     }
   }

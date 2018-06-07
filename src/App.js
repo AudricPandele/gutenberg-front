@@ -18,9 +18,9 @@ class App extends Component {
         <Route exact path='/' component={Home}/>
         <Route exact path='/about' component={About}/>
         <Route exact path='/dashboard' component={Dashboard}/>
-        <Route path='/folder/:slug' render={props =>
+        <Route path='/:username/folder/:slug' render={props =>
           <div className="">
-            <Folder slug={props.match.params.slug} id={props.location.id} name={props.location.name}/>
+            <Folder username={props.match.params.username} slug={props.match.params.slug} id={props.location.id} name={props.location.name}/>
           </div> }
         />
         <Route exact path='/login' component={Login}/>
