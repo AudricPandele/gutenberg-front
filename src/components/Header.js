@@ -15,18 +15,27 @@ class Header extends Component {
     function logoutClick () {
       const cookies = new Cookies();
       cookies.remove('token');
+      cookies.remove('id');
+      cookies.remove('username');
+      cookies.remove('image_url');
     }
 
     const cookies = new Cookies();
     const token = cookies.get('token');
+    const username = cookies.get('username');
+    const img_url = cookies.get('image_url');
     function Nav () {
       if(token != null){
         return (
-          <span className="navbar-text">
-            <Link to={{ pathname: '/'}} onClick={logoutClick}>
-              <a className="">Logout</a>
-            </Link>
-          </span>
+          <div>
+            <img src={img_url} width="30px" className="picture mr-3"></img>
+            <span className="navbar-text mr-3">{username}</span>
+            <span className="navbar-text">
+              <Link to={{ pathname: '/'}} onClick={logoutClick}>
+                <a className="">Logout</a>
+              </Link>
+            </span>
+          </div>
         )
       } else {
         return (

@@ -11,8 +11,7 @@ class IsLogged extends Component {
     const token = cookies.get('token');
     if(token == null){
       return(<Redirect to='/login' />);
-    }
-    else{
+    } else {
       return (
         <div></div>
       );

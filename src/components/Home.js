@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Header from './Header.js';
-import IsLogged from './Auth/isLogged.js';
 import './../App.css';
 
 class Home extends Component {
