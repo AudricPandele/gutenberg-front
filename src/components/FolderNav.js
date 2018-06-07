@@ -11,7 +11,7 @@ class FolderNav extends Component {
     const username = cookies.get('username');
 
     const list = this.props.data.map((query) => {
-      const pathFolder = '@'+username+'/folder/'+query.slug;
+      const pathFolder = '/@'+username+'/folder/'+query.slug;
       return (
         <li class="list-group-item">
           <Link to={{ pathname: pathFolder, id: query.id, name: query.name }}>
