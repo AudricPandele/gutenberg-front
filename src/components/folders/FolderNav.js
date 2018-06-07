@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import './../App.css';
+import './../../App.css';
 
 class FolderNav extends Component {
 

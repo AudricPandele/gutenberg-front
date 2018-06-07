@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Header from './Header.js';
-import Article from './Article.js';
-import ArticleList from './ArticleList.js';
-import FolderNav from './FolderNav.js';
+import Article from './articles/Article.js';
+import ArticleList from './articles/ArticleList.js';
+import FolderNav from './folders/FolderNav.js';
 import IsLogged from './Auth/isLogged.js';
 import './../App.css';
 
