@@ -37,6 +37,11 @@ class Header extends Component {
         <div className="collapse navbar-collapse t-d-n" id="navbarText">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
+              <Link to={{ pathname: '/dashboard'}}>
+                <a className="nav-link">Dashboard</a>
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link to={{ pathname: '/about'}}>
                 <a className="nav-link">About</a>
               </Link>
