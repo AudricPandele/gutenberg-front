@@ -18,9 +18,10 @@ class Dashboard extends Component {
 
   componentDidMount() {
     const cookies = new Cookies();
-    const token = "Bearer "+cookies.get('token');
+    const token = cookies.get('token');
+    const id = cookies.get('id');
 
-    const fetchFolders = request("user/8/folders", token)
+    const fetchFolders = request("user/"+id+"/folders", token)
       .then(result => {
         this.setState({folders: result })
       });

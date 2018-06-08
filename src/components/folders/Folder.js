@@ -13,37 +13,35 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       folders: [],
-      articles: []
+      articles: [],
+      slug: this.props.slug
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.slug != this.props.slug) {
+      this.setState({'slug': nextProps.slug});
     }
   }
 
   componentDidMount() {
     const cookies = new Cookies();
     const token = cookies.get('token');
-
-    const fetchFolders = request("user/8/folders", token)
+    const id = cookies.get('id');
+    const username = this.props.username.slice( 1 );
+    const fetchFolders = request("user/"+id+"/folders", token)
       .then(result => {
         this.setState({folders: result })
+      });
+
+    const fetchArticles = request("user/"+username+"/folders/"+this.state.slug+"/articles", token)
+      .then(result => {
+        this.setState({articles: result})
       });
   }
 
   render() {
-    const fetchArticles = [
-      {
-        id:1,
-        title: "Twitter",
-        text: "Twitter le petit oiseau",
-        link: "http://twitter.com",
-        image: "https://images-eu.ssl-images-amazon.com/images/I/31KluT5nBkL.png"
-      },
-      {
-        id:2,
-        title: "Facebook",
-        text: "Facebook le petit bouque",
-        link: "http://facebook.com",
-        image: "http://resize3-europe1.ladmedia.fr/r/620,310,FFFFFF,center-middle/img/var/europe1/storage/images/europe1/dossiers/facebook/9884834-2-fre-FR/facebook.jpg"
-      }
-    ];
+
     return (
       <div className="">
         <IsLogged></IsLogged>
@@ -62,7 +60,7 @@ class Dashboard extends Component {
             <div className="col-md-9">
               <h1 className="text-center">Welcome to {this.props.name}</h1>
               <ArticleList
-                data={fetchArticles}
+                data={this.state.articles}
               ></ArticleList>
             </div>
 

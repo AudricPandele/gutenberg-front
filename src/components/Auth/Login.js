@@ -36,22 +36,14 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password
     });
-    const data = request("auth/signin", null, body, 'POST')
+    const method = 'POST';
+    const data = request("auth/signin", null, body, method)
       .then(result => {
         cookies.set('id', result.user.id)
         cookies.set('token', result.token)
         cookies.set('username', result.user.username)
         cookies.set('image_url', result.user.image_url)
-        this.setState({ redirect: true })
       })
-  }
-
-  pathTo = () => {
-    if (this.state.redirect = true) {
-      return (
-        <Redirect to={'/dashboard'}/>
-      )
-    }
   }
 
   render() {
@@ -78,10 +70,9 @@ class Login extends Component {
                   </Link>
                 </small>
               </div>
-              <a onClick={this.login} className="btn btn-primary text-white">
-                Login
-              </a>
-              {this.pathTo}
+                <Link onClick={this.login} to={{pathname:'/dashboard'}} >
+                  <div classname="btn btn-primary text-white">Login</div>
+                </Link>
             </form>
           </div>
           <div className="col-md-3"></div>

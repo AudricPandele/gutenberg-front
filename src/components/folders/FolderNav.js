@@ -13,7 +13,7 @@ class FolderNav extends Component {
       const pathFolder = '/@'+username+'/folder/'+query.slug;
       return (
         <li className="list-group-item">
-          <Link to={{ pathname: pathFolder, id: query.id, name: query.name }}>
+          <Link to={{ pathname: pathFolder, id: query.id, username: query.owner, name: query.name }}>
             {query.name}
           </Link>
         </li>
