@@ -50,7 +50,9 @@ class Header extends Component {
 
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-white">
-        <a className="navbar-brand" href="#">Gutenberg</a>
+        <Link to={{pathname: '/'}}>
+          <a className="navbar-brand text-info">Gutenberg</a>
+        </Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
