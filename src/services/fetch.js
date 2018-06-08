@@ -1,5 +1,4 @@
 const request = async (_endpoint, _token = null, _body = null, _method = 'GET') => {
-  console.log(_endpoint);
   const response = await fetch('http://localhost:1337/'+_endpoint, {
     method: _method,
     headers: {
