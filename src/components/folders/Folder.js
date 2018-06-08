@@ -18,17 +18,32 @@ class Dashboard extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.slug != this.props.slug) {
-      this.setState({'slug': nextProps.slug});
+  componentDidMount = () => {
+    this.getData()
+  }
+
+  // Set state when props change
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.slug !== prevState.slug) {
+      return {
+        slug: nextProps.slug,
+      };
+    }
+    return null;
+  }
+
+  // if props are different call api to update articles
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.slug != this.state.slug) {
+      this.getData()
     }
   }
 
-  componentDidMount() {
+  getData = () => {
     const cookies = new Cookies();
     const token = cookies.get('token');
     const username = cookies.get('username');
-
+    //const username = this.props.username.slice( 1 );
     const fetchFolders = request("user/"+username+"/folders", token)
       .then(result => {
         this.setState({folders: result })
@@ -41,7 +56,6 @@ class Dashboard extends Component {
   }
 
   render() {
-
     return (
       <div className="">
         <IsLogged></IsLogged>

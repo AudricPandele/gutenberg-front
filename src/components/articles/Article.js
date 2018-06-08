@@ -9,29 +9,15 @@ class Article extends Component {
 
   render() {
     return (
-      <div className="columns card-padding">
-        <div className="card article-card">
-          <div className="card-content">
-            <div className="columns">
-              <div className="column is-mobile is-three-quarters">
-                <div className="columns col-padding">
-                  <div className="media-content">
-                    <a href={this.props.link} target="_blank" className="title is-4">{this.props.title}</a>
-                  </div>
-                </div>
-                <div className="columns col-padding">
-                  <div className="content text-preview-wrapper">
-                    <p className="text-preview">{this.props.text}</p>
-                  </div>
-                </div>
-              </div>
-              <div className="column is-mobile is-one-quarter">
-                <div className="media">
-                  <figure>
-                    <img src={this.props.image} className="card-img" alt="Placeholder"></img>
-                  </figure>
-                </div>
-              </div>
+      <div className="card">
+        <div className="card-body">
+          <div className="row">
+            <div className="col-md-8">
+              <h5 className="card-title"><a href={this.props.link} target="_blank">{this.props.title}</a></h5>
+              <p className="card-text text-preview">{this.props.text} ...</p>
+            </div>
+            <div className="col-md-4">
+              <img className="card-img" src={this.props.image}></img>
             </div>
           </div>
         </div>
