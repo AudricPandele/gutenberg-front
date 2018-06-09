@@ -18,6 +18,10 @@ class Dashboard extends Component {
     }
   }
 
+  handler = () => {
+    this.getData()
+  }
+
   componentDidMount = () => {
     this.getData()
   }
@@ -66,13 +70,17 @@ class Dashboard extends Component {
             {/* MENU GAUCHE */}
             <div className="col-md-2">
               <FolderNav
+                action={this.handler}
                 data={this.state.folders}
               ></FolderNav>
             </div>
 
             {/* CONTENT MILLIEU */}
-            <div className="col-md-9">
-              <h1 className="text-center">Welcome to {this.props.name}</h1>
+            <div className="col-md-9 no-padding">
+              <div className="col-md-12 text-center margin-bottom">
+                <span className="2x badge badge-pill badge-primary text-center">{this.props.name}</span>
+              </div>
+
               <ArticleList
                 data={this.state.articles}
               ></ArticleList>

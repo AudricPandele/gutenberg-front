@@ -15,3 +15,53 @@
   overflow:hidden;
   height: 70px;
 }
+
+.primary{
+  color: hsl(171, 100%, 41%) !important;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.secondary{
+  color: rgba(0,0,0,.5) !important;
+}
+
+.badge-primary{
+  font-size: 1em;
+  background-color: hsl(171, 100%, 41%) !important;
+}
+
+.no-padding{
+  padding: 0 !important;
+}
+
+.margin-bottom{
+  margin-bottom: 15px;
+}
+
+.navbar-brand{
+  font-family: 'Times new roman';
+  color: black !important;
+}
+
+.list-group-item{
+  border: none !important;
+}
+
+.add-button{
+  cursor: pointer;
+  text-decoration: underline !important;
+}
+
+.btn-outline-primary{
+  color: hsl(171, 100%, 41%) !important;
+  border-color: hsl(171, 100%, 41%) !important;
+}
+
+.btn-outline-primary:hover{
+  color: white !important;
+  background-color: hsl(171, 100%, 41%) !important;
+  border-color: hsl(171, 100%, 41%) !important;
+}

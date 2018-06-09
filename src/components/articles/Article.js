@@ -13,7 +13,7 @@ class Article extends Component {
         <div className="card-body">
           <div className="row">
             <div className="col-md-8">
-              <h5 className="card-title"><a href={this.props.link} target="_blank">{this.props.title}</a></h5>
+              <h5 className="card-title"><a className="secondary" href={this.props.link} target="_blank">{this.props.title}</a></h5>
               <p className="card-text text-preview">{this.props.text} ...</p>
             </div>
             <div className="col-md-4">
