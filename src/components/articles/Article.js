@@ -9,7 +9,7 @@ class Article extends Component {
 
   render() {
     return (
-      <div className="card">
+      <div className="card margin-bottom">
         <div className="card-body">
           <div className="row">
             <div className="col-md-8">

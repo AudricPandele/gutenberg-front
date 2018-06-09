@@ -14,7 +14,36 @@ class Dashboard extends Component {
     this.state = {
       folders: [],
       articles: [],
-      slug: this.props.slug
+      slug: this.props.slug,
+      showAddArticle: false,
+      url: ''
+    }
+  }
+
+  displayAddArticle = () => {
+    this.setState({ showAddArticle: !this.state.showAddArticle })
+  }
+
+  updateInputArticleUrl = (evt) => {
+    this.setState({
+      url: evt.target.value
+    });
+  }
+
+  addArticle = () => {
+    if (this.state.url != '') {
+      const cookies = new Cookies();
+      const username = cookies.get('username')
+      const body = JSON.stringify({
+        url: this.state.url,
+      });
+      const data = request("user/"+username+"/folders/"+this.props.slug+"/articles", cookies.get('token'), body, 'POST')
+        .then(result => {
+          this.getData()
+          this.setState({ showAddArticle: !this.state.showAddArticle })
+        })
+    }else{
+      this.setState({ showAddArticle: !this.state.showAddArticle })
     }
   }
 
@@ -77,13 +106,30 @@ class Dashboard extends Component {
 
             {/* CONTENT MILLIEU */}
             <div className="col-md-9 no-padding">
-              <div className="col-md-12 text-center margin-bottom">
-                <span className="2x badge badge-pill badge-primary text-center">{this.props.name}</span>
-              </div>
+              <div className="row">
+                <div className="col-md-5 margin-bottom no-padding">
+                  { this.state.showAddArticle ? (
+                    <div>
+                      <div className="input-group mb-3">
+                        <input onChange={this.updateInputArticleUrl} type="text" className="form-control" placeholder="Article URL" aria-describedby="basic-addon2"></input>
+                        <div className="input-group-append">
+                          <button className="btn btn-outline-primary" onClick={this.addArticle} type="button">Add</button>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <button className="rounded btn btn-outline-primary" onClick={this.displayAddArticle} type="button">Add article</button>
+                  )}
+                </div>
+                <div className="col-md-2 text-center margin-bottom no-padding">
+                  <span className="2x badge badge-pill badge-primary text-center">{this.props.name}</span>
+                </div>
+                <div className="col-md-5 no-padding"></div>
 
-              <ArticleList
-                data={this.state.articles}
-              ></ArticleList>
+                <ArticleList
+                  data={this.state.articles}
+                ></ArticleList>
+              </div>
             </div>
 
             {/* LEGER ESPACE DROITE */}

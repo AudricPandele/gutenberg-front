@@ -60,6 +60,10 @@
   border-color: hsl(171, 100%, 41%) !important;
 }
 
+.rounded{
+  border-radius: 2rem !important;
+}
+
 .btn-outline-primary:hover{
   color: white !important;
   background-color: hsl(171, 100%, 41%) !important;

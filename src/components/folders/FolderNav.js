@@ -63,10 +63,10 @@ class FolderNav extends Component {
           <li className="list-group-item">
             { this.state.showAddFolder ? (
               <div>
-                <div class="input-group mb-3">
-                  <input onChange={this.updateInputFolderName} type="text" class="form-control" placeholder="Folder name" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-primary" onClick={this.addFolder} type="button">Add</button>
+                <div className="input-group mb-3">
+                  <input onChange={this.updateInputFolderName} type="text" className="form-control" placeholder="Folder name" aria-describedby="basic-addon2"></input>
+                  <div className="input-group-append">
+                    <button className="btn btn-outline-primary" onClick={this.addFolder} type="button">Add</button>
                   </div>
                 </div>
               </div>
