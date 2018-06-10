@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../Header.js';
 import ArticleList from '../articles/ArticleList.js';
 import FolderNav from './FolderNav.js';
+import Contributors from './contributors.js';
 import IsLogged from '../Auth/isLogged.js';
 import request from '../../services/fetch.js';
 import Cookies from 'universal-cookie';
@@ -105,31 +106,38 @@ class Dashboard extends Component {
             </div>
 
             {/* CONTENT MILLIEU */}
-            <div className="col-md-9 no-padding">
-              <div className="row">
-                <div className="col-md-5 margin-bottom no-padding">
-                  { this.state.showAddArticle ? (
-                    <div>
-                      <div className="input-group mb-3">
-                        <input onChange={this.updateInputArticleUrl} type="text" className="form-control" placeholder="Article URL" aria-describedby="basic-addon2"></input>
-                        <div className="input-group-append">
-                          <button className="btn btn-outline-primary" onClick={this.addArticle} type="button">Add</button>
+            <div className="col-md-9">
+                <div className="row">
+                  <div className="col-md-5 margin-bottom no-padding">
+                    { this.state.showAddArticle ? (
+                      <div>
+                        <div className="input-group mb-3">
+                          <input onChange={this.updateInputArticleUrl} type="text" className="form-control" placeholder="Article URL" aria-describedby="basic-addon2"></input>
+                          <div className="input-group-append">
+                            <button className="btn btn-outline-primary" onClick={this.addArticle} type="button">Add</button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ) : (
-                    <button className="rounded btn btn-outline-primary" onClick={this.displayAddArticle} type="button">Add article</button>
-                  )}
+                    ) : (
+                      <button className="rounded btn btn-outline-primary" onClick={this.displayAddArticle} type="button">Add article</button>
+                    )}
+                  </div>
+                  <div className="col-md-2 text-center margin-bottom no-padding">
+                    <span className="2x badge badge-pill badge-primary text-center">{this.props.name}</span>
+                  </div>
+                  <div className="col-md-5 no-padding"></div>
                 </div>
-                <div className="col-md-2 text-center margin-bottom no-padding">
-                  <span className="2x badge badge-pill badge-primary text-center">{this.props.name}</span>
-                </div>
-                <div className="col-md-5 no-padding"></div>
 
-                <ArticleList
-                  data={this.state.articles}
-                ></ArticleList>
-              </div>
+                <div className="row margin-bottom">
+                  <Contributors slug={this.state.slug} />
+                </div>
+
+
+                <div className="row">
+                  <ArticleList
+                    data={this.state.articles}
+                  ></ArticleList>
+                </div>
             </div>
 
             {/* LEGER ESPACE DROITE */}
